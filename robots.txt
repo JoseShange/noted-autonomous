@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://noted-autonomous.netlify.app/sitemap.xml
