@@ -24,17 +24,15 @@ h2{font-size:clamp(1.7rem,3.6vw,2.7rem);margin-bottom:.5em}
 .btn:hover{transform:translateY(-2px);box-shadow:0 0 28px rgba(63,224,232,.8)}
 .btn.ghost{background:transparent;color:var(--teal);border:1px solid var(--line);box-shadow:none}
 .btn.ghost:hover{border-color:var(--teal);box-shadow:var(--glow)}
-/* header */
 header{position:sticky;top:0;z-index:50;background:rgba(4,7,12,.82);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
 .nav{display:flex;align-items:center;justify-content:space-between;height:74px}
-.brand{display:flex;align-items:center;gap:.7rem;font-weight:800;letter-spacing:.02em}
+.brand{display:flex;align-items:center;gap:.7rem;font-weight:800}
 .brand img{height:52px;width:auto;filter:drop-shadow(0 0 8px rgba(63,224,232,.5))}
 .navlinks{display:flex;gap:1.6rem;align-items:center}
 .navlinks a{color:var(--muted);font-size:.95rem;transition:color .2s}
 .navlinks a:hover{color:var(--teal)}
 .navphone{color:var(--teal)!important;font-weight:700}
 .menubtn{display:none;background:none;border:none;color:var(--teal);font-size:1.6rem;cursor:pointer}
-/* hero */
 .hero{position:relative;padding:64px 0 40px;overflow:hidden}
 .hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
 .hero h1{font-size:clamp(2.1rem,5vw,3.6rem);margin-bottom:.4em}
@@ -44,14 +42,13 @@ header{position:sticky;top:0;z-index:50;background:rgba(4,7,12,.82);backdrop-fil
 .live{display:inline-flex;align-items:center;gap:.5rem;color:var(--muted);font-size:.85rem;margin-bottom:1.1rem}
 .live .dot{width:9px;height:9px;border-radius:50%;background:#37f5a0;box-shadow:0 0 10px #37f5a0;animation:pulse 1.6s infinite}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
-/* hologram (avatar selector) */
 .holo{position:relative;border-radius:20px;padding:18px;background:radial-gradient(120% 90% at 50% 10%,rgba(63,224,232,.10),transparent 60%);border:1px solid var(--line);box-shadow:inset 0 0 60px rgba(63,224,232,.08),var(--glow)}
 .holo-stage{position:relative;aspect-ratio:16/10;border-radius:14px;overflow:hidden;background:#02060b}
 .holo-stage .scan{position:absolute;inset:0;background:repeating-linear-gradient(180deg,rgba(63,224,232,.06) 0 2px,transparent 2px 5px);mix-blend-mode:screen;pointer-events:none;z-index:3;animation:scan 6s linear infinite}
 @keyframes scan{from{background-position-y:0}to{background-position-y:120px}}
 .holo-slide{position:absolute;inset:0;opacity:0;transition:opacity .8s ease;display:flex;align-items:center;justify-content:center}
 .holo-slide.active{opacity:1}
-.holo-slide img{width:100%;height:100%;object-fit:cover;filter:contrast(1.12) brightness(1.06) saturate(1.15) drop-shadow(0 0 12px rgba(63,224,232,.35));image-rendering:-webkit-optimize-contrast;animation:float 6s ease-in-out infinite}
+.holo-slide img{width:100%;height:100%;object-fit:cover;filter:contrast(1.12) brightness(1.06) saturate(1.15) drop-shadow(0 0 12px rgba(63,224,232,.35));animation:float 6s ease-in-out infinite}
 @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
 .holo-ctrl{position:absolute;top:50%;transform:translateY(-50%);z-index:5;background:rgba(4,10,18,.6);border:1px solid var(--line);color:var(--teal);width:42px;height:42px;border-radius:50%;font-size:1.3rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:.2s}
 .holo-ctrl:hover{background:var(--teal);color:#02121a;box-shadow:var(--glow)}
@@ -61,54 +58,46 @@ header{position:sticky;top:0;z-index:50;background:rgba(4,7,12,.82);backdrop-fil
 .holo-dots button.active{background:var(--teal);box-shadow:var(--glow);transform:scale(1.25)}
 .holo-cap{text-align:center;color:var(--muted);margin-top:10px;font-size:.9rem}
 .holo-cap b{color:var(--teal)}
-/* generic section */
 section{padding:70px 0}
 .center{text-align:center}
 .center .sub{margin:0 auto}
-/* features */
 .feat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:36px}
 .card{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:26px;transition:.25s}
 .card:hover{transform:translateY(-4px);border-color:var(--teal);box-shadow:var(--glow)}
 .card .ic{font-size:1.8rem;margin-bottom:.5rem}
 .card h3{font-size:1.1rem;margin-bottom:.4rem;color:var(--ink)}
 .card p{color:var(--muted);font-size:.95rem}
-/* handshake band */
 .band{position:relative;min-height:560px;display:flex;flex-direction:column;justify-content:space-between;align-items:center;text-align:center;padding:48px 0;border-radius:22px;overflow:hidden;border:1px solid var(--line);box-shadow:var(--glow)}
 .band img.bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:contrast(1.1) brightness(1.04) saturate(1.12);z-index:0}
 .band::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(2,6,11,.72) 0%,transparent 26%,transparent 70%,rgba(2,6,11,.8) 100%);z-index:1}
 .band .top,.band .bot{position:relative;z-index:2;max-width:760px;padding:0 20px}
 .band h2{margin:0}
 .band .bot{color:#cfe9f5;font-size:1.15rem;text-shadow:0 2px 14px rgba(0,0,0,.8)}
-/* capabilities hologram */
 .cap-holo{max-width:960px;margin:34px auto 0;position:relative;border-radius:18px;overflow:hidden;border:1px solid var(--line);box-shadow:var(--glow);background:#02060b}
 .cap-stage{position:relative;aspect-ratio:16/9}
 .cap-slide{position:absolute;inset:0;opacity:0;transition:opacity 1s ease}
 .cap-slide.active{opacity:1}
-.cap-slide img{width:100%;height:100%;object-fit:cover;filter:contrast(1.25) brightness(1.12) saturate(1.25) drop-shadow(0 0 14px rgba(63,224,232,.5));image-rendering:-webkit-optimize-contrast}
+.cap-slide img{width:100%;height:100%;object-fit:cover;filter:contrast(1.25) brightness(1.12) saturate(1.25) drop-shadow(0 0 14px rgba(63,224,232,.5))}
 .cap-stage .scan{position:absolute;inset:0;background:repeating-linear-gradient(180deg,rgba(63,224,232,.05) 0 2px,transparent 2px 5px);mix-blend-mode:screen;pointer-events:none;animation:scan 6s linear infinite}
 .cap-dots{display:flex;gap:.5rem;justify-content:center;margin-top:16px}
 .cap-dots button{width:34px;height:5px;border-radius:3px;border:none;background:rgba(159,180,199,.35);cursor:pointer;transition:.2s}
 .cap-dots button.active{background:var(--teal);box-shadow:var(--glow)}
-/* diversity marquee */
 .divers{overflow:hidden;position:relative}
 .marquee{display:flex;gap:20px;width:max-content;animation:slide 60s linear infinite}
 .divers:hover .marquee{animation-play-state:paused}
 @keyframes slide{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 .face{flex:0 0 auto;width:340px;border-radius:14px;overflow:hidden;border:1px solid var(--line);box-shadow:0 0 20px rgba(63,224,232,.12)}
-.face img{width:100%;height:100%;display:block;object-fit:cover;filter:contrast(1.18) brightness(1.06) saturate(1.12) drop-shadow(0 0 8px rgba(63,224,232,.25));image-rendering:-webkit-optimize-contrast}
+.face img{width:100%;height:100%;display:block;object-fit:cover;filter:contrast(1.18) brightness(1.06) saturate(1.12) drop-shadow(0 0 8px rgba(63,224,232,.25))}
 .divers::before,.divers::after{content:"";position:absolute;top:0;bottom:0;width:120px;z-index:2;pointer-events:none}
 .divers::before{left:0;background:linear-gradient(90deg,var(--bg),transparent)}
 .divers::after{right:0;background:linear-gradient(270deg,var(--bg),transparent)}
-/* steps */
 .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:36px;counter-reset:s}
 .step{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:26px;position:relative}
 .step::before{counter-increment:s;content:counter(s);position:absolute;top:-16px;left:22px;width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,var(--teal),var(--teal2));color:#02121a;font-weight:800;display:flex;align-items:center;justify-content:center;box-shadow:var(--glow)}
 .step h3{margin:.4rem 0 .3rem;font-size:1.1rem}
 .step p{color:var(--muted);font-size:.95rem}
-/* CTA */
 .cta{text-align:center;background:radial-gradient(120% 100% at 50% 0%,rgba(63,224,232,.12),transparent 60%);border:1px solid var(--line);border-radius:22px;padding:56px 24px;box-shadow:var(--glow)}
 .cta .phone{font-size:1.4rem;color:var(--teal);font-weight:800;margin-top:1rem;display:inline-flex;gap:.5rem;align-items:center}
-/* footer */
 footer{border-top:1px solid var(--line);padding:48px 0 30px;color:var(--muted)}
 .foot-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:30px;margin-bottom:28px}
 .foot-grid img{height:56px;margin-bottom:.8rem;filter:drop-shadow(0 0 8px rgba(63,224,232,.4))}
@@ -139,9 +128,7 @@ footer{border-top:1px solid var(--line);padding:48px 0 30px;color:var(--muted)}
     <button class="menubtn" id="menubtn" aria-label="Menu">&#9776;</button>
   </div>
 </header>
-
 <main id="top">
-<!-- HERO -->
 <section class="hero">
   <div class="wrap hero-grid">
     <div>
@@ -158,8 +145,8 @@ footer{border-top:1px solid var(--line);padding:48px 0 30px;color:var(--muted)}
       <div class="holo">
         <div class="holo-stage" id="avatarStage">
           <div class="scan"></div>
-          <button class="holo-ctrl prev" id="avPrev" aria-label="Previous">&#8249;</button>
-          <button class="holo-ctrl next" id="avNext" aria-label="Next">&#8250;</button>
+          <button class="holo-ctrl prev" id="avPrev" aria-label="Previous">‹</button>
+          <button class="holo-ctrl next" id="avNext" aria-label="Next">›</button>
         </div>
         <div class="holo-cap" id="avatarCap"></div>
         <div class="holo-dots" id="avatarDots"></div>
@@ -167,11 +154,7 @@ footer{border-top:1px solid var(--line);padding:48px 0 30px;color:var(--muted)}
     </div>
   </div>
 </section>
-
-<!-- CHOOSE anchor duplicate for nav -->
 <span id="choose"></span>
-
-<!-- FEATURES -->
 <section id="features">
   <div class="wrap center">
     <p class="tag">Why Noted Autonomous</p>
@@ -183,12 +166,10 @@ footer{border-top:1px solid var(--line);padding:48px 0 30px;color:var(--muted)}
       <div class="card"><div class="ic">⚡</div><h3>Instant notifications</h3><p>The moment a call ends, your team gets an SMS and email with the full summary — ready to follow up.</p></div>
       <div class="card"><div class="ic">📅</div><h3>Books appointments</h3><p>Qualified callers are guided to book a demo or callback, so your calendar fills itself.</p></div>
       <div class="card"><div class="ic">🎙️</div><h3>Natural conversation</h3><p>A warm, human-sounding voice that represents your brand and puts callers at ease.</p></div>
-      <div class="card"><div class="ic">🔒</div><h3>Reliable &amp; consistent</h3><p>Nikita never has an off day — the same polished greeting and process on every single call.</p></div>
+      <div class="card"><div class="ic">🔒</div><h3>Reliable and consistent</h3><p>Nikita never has an off day — the same polished greeting and process on every single call.</p></div>
     </div>
   </div>
 </section>
-
-<!-- HANDSHAKE BAND -->
 <section>
   <div class="wrap">
     <div class="band">
@@ -198,8 +179,6 @@ footer{border-top:1px solid var(--line);padding:48px 0 30px;color:var(--muted)}
     </div>
   </div>
 </section>
-
-<!-- CAPABILITIES HOLOGRAM -->
 <section id="capabilities">
   <div class="wrap center">
     <p class="tag">Make it yours</p>
@@ -211,8 +190,6 @@ footer{border-top:1px solid var(--line);padding:48px 0 30px;color:var(--muted)}
     <div class="cap-dots" id="capDots"></div>
   </div>
 </section>
-
-<!-- DIVERSITY -->
 <section>
   <div class="wrap center">
     <p class="tag">A receptionist for everyone</p>
@@ -223,8 +200,6 @@ footer{border-top:1px solid var(--line);padding:48px 0 30px;color:var(--muted)}
     <div class="marquee" id="marquee"></div>
   </div>
 </section>
-
-<!-- HOW IT WORKS -->
 <section id="how">
   <div class="wrap center">
     <p class="tag">How it works</p>
@@ -237,8 +212,6 @@ footer{border-top:1px solid var(--line);padding:48px 0 30px;color:var(--muted)}
     </div>
   </div>
 </section>
-
-<!-- CTA -->
 <section>
   <div class="wrap">
     <div class="cta">
@@ -251,7 +224,6 @@ footer{border-top:1px solid var(--line);padding:48px 0 30px;color:var(--muted)}
   </div>
 </section>
 </main>
-
 <footer>
   <div class="wrap">
     <div class="foot-grid">
@@ -274,9 +246,7 @@ footer{border-top:1px solid var(--line);padding:48px 0 30px;color:var(--muted)}
     <div class="copy">© 2026 Noted Autonomous. All rights reserved. · Receptionist AI</div>
   </div>
 </footer>
-
 <script>
-// Avatar selector hologram
 var avatars=[
  {img:'avatar-nikita.png',name:'Nikita'},
  {img:'avatar-sophie.png',name:'Sophie'},
@@ -292,317 +262,16 @@ avatars.forEach(function(a,i){
   var im=document.createElement('img');im.src=a.img;im.alt=a.name;im.loading=i===0?'eager':'lazy';
   d.appendChild(im);stage.appendChild(d);
   var b=document.createElement('button');if(i===0)b.className='active';b.setAttribute('aria-label',a.name);
-  b.addEventListener('click',function(){go(i)});dots.appendChild(b);
+  b.addEventListener('click',function(){go(i);});dots.appendChild(b);
 });
 var slides=stage.querySelectorAll('.holo-slide');var dbtns=dots.querySelectorAll('button');var idx=0;
-function render(){slides.forEach(function(s,i){s.classList.toggle('active',i===idx)});dbtns.forEach(function(b,i){b.classList.toggle('active',i===idx)});cap.innerHTML='<b>'+avatars[idx].name+'</b> — your AI receptionist';}
+function render(){slides.forEach(function(s,i){s.classList.toggle('active',i===idx);});dbtns.forEach(function(b,i){b.classList.toggle('active',i===idx);});cap.innerHTML='<b>'+avatars[idx].name+'</b> — your AI receptionist';}
 function go(i){idx=(i+avatars.length)%avatars.length;render();reset();}
 render();
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Noted Autonomous — AI Voice Receptionists</title>
-<meta name="description" content="Noted Autonomous builds AI voice receptionists that answer every call 24/7, capture every lead, and keep your team in the loop. Choose your receptionist's voice, accent and name — or clone your own.">
-<style>
-:root{
-  --bg:#04070c; --bg2:#070d16; --panel:#0a121e; --teal:#3fe0e8; --teal2:#22b6d6;
-  --ink:#eaf6ff; --muted:#9fb4c7; --line:rgba(63,224,232,.18);
-  --glow:0 0 18px rgba(63,224,232,.55),0 0 42px rgba(63,224,232,.25);
-}
-*{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{background:var(--bg);color:var(--ink);font-family:'Segoe UI',system-ui,-apple-system,Roboto,Helvetica,Arial,sans-serif;line-height:1.6;overflow-x:hidden}
-a{color:inherit;text-decoration:none}
-.wrap{max-width:1200px;margin:0 auto;padding:0 22px}
-.tag{color:var(--teal);letter-spacing:.28em;font-size:.72rem;font-weight:700;text-transform:uppercase}
-h1,h2,h3{line-height:1.15;font-weight:800;letter-spacing:-.01em}
-h2{font-size:clamp(1.7rem,3.6vw,2.7rem);margin-bottom:.5em}
-.sub{color:var(--muted);max-width:640px}
-.btn{display:inline-flex;align-items:center;gap:.5rem;background:linear-gradient(135deg,var(--teal),var(--teal2));color:#02121a;font-weight:800;padding:.85rem 1.5rem;border-radius:999px;box-shadow:var(--glow);transition:transform .2s,box-shadow .2s;border:none;cursor:pointer;font-size:1rem}
-.btn:hover{transform:translateY(-2px);box-shadow:0 0 28px rgba(63,224,232,.8)}
-.btn.ghost{background:transparent;color:var(--teal);border:1px solid var(--line);box-shadow:none}
-.btn.ghost:hover{border-color:var(--teal);box-shadow:var(--glow)}
-/* header */
-header{position:sticky;top:0;z-index:50;background:rgba(4,7,12,.82);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
-.nav{display:flex;align-items:center;justify-content:space-between;height:74px}
-.brand{display:flex;align-items:center;gap:.7rem;font-weight:800;letter-spacing:.02em}
-.brand img{height:52px;width:auto;filter:drop-shadow(0 0 8px rgba(63,224,232,.5))}
-.navlinks{display:flex;gap:1.6rem;align-items:center}
-.navlinks a{color:var(--muted);font-size:.95rem;transition:color .2s}
-.navlinks a:hover{color:var(--teal)}
-.navphone{color:var(--teal)!important;font-weight:700}
-.menubtn{display:none;background:none;border:none;color:var(--teal);font-size:1.6rem;cursor:pointer}
-/* hero */
-.hero{position:relative;padding:64px 0 40px;overflow:hidden}
-.hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
-.hero h1{font-size:clamp(2.1rem,5vw,3.6rem);margin-bottom:.4em}
-.hero h1 .hl{background:linear-gradient(120deg,var(--teal),#bff8fb);-webkit-background-clip:text;background-clip:text;color:transparent}
-.hero .sub{font-size:1.12rem;margin-bottom:1.6rem}
-.hero-cta{display:flex;gap:.9rem;flex-wrap:wrap}
-.live{display:inline-flex;align-items:center;gap:.5rem;color:var(--muted);font-size:.85rem;margin-bottom:1.1rem}
-.live .dot{width:9px;height:9px;border-radius:50%;background:#37f5a0;box-shadow:0 0 10px #37f5a0;animation:pulse 1.6s infinite}
-@keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
-/* hologram (avatar selector) */
-.holo{position:relative;border-radius:20px;padding:18px;background:radial-gradient(120% 90% at 50% 10%,rgba(63,224,232,.10),transparent 60%);border:1px solid var(--line);box-shadow:inset 0 0 60px rgba(63,224,232,.08),var(--glow)}
-.holo-stage{position:relative;aspect-ratio:16/10;border-radius:14px;overflow:hidden;background:#02060b}
-.holo-stage .scan{position:absolute;inset:0;background:repeating-linear-gradient(180deg,rgba(63,224,232,.06) 0 2px,transparent 2px 5px);mix-blend-mode:screen;pointer-events:none;z-index:3;animation:scan 6s linear infinite}
-@keyframes scan{from{background-position-y:0}to{background-position-y:120px}}
-.holo-slide{position:absolute;inset:0;opacity:0;transition:opacity .8s ease;display:flex;align-items:center;justify-content:center}
-.holo-slide.active{opacity:1}
-.holo-slide img{width:100%;height:100%;object-fit:cover;filter:contrast(1.12) brightness(1.06) saturate(1.15) drop-shadow(0 0 12px rgba(63,224,232,.35));image-rendering:-webkit-optimize-contrast;animation:float 6s ease-in-out infinite}
-@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
-.holo-ctrl{position:absolute;top:50%;transform:translateY(-50%);z-index:5;background:rgba(4,10,18,.6);border:1px solid var(--line);color:var(--teal);width:42px;height:42px;border-radius:50%;font-size:1.3rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:.2s}
-.holo-ctrl:hover{background:var(--teal);color:#02121a;box-shadow:var(--glow)}
-.holo-ctrl.prev{left:12px}.holo-ctrl.next{right:12px}
-.holo-dots{display:flex;gap:.5rem;justify-content:center;margin-top:14px}
-.holo-dots button{width:10px;height:10px;border-radius:50%;border:none;background:rgba(159,180,199,.35);cursor:pointer;transition:.2s}
-.holo-dots button.active{background:var(--teal);box-shadow:var(--glow);transform:scale(1.25)}
-.holo-cap{text-align:center;color:var(--muted);margin-top:10px;font-size:.9rem}
-.holo-cap b{color:var(--teal)}
-/* generic section */
-section{padding:70px 0}
-.center{text-align:center}
-.center .sub{margin:0 auto}
-/* features */
-.feat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:36px}
-.card{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:26px;transition:.25s}
-.card:hover{transform:translateY(-4px);border-color:var(--teal);box-shadow:var(--glow)}
-.card .ic{font-size:1.8rem;margin-bottom:.5rem}
-.card h3{font-size:1.1rem;margin-bottom:.4rem;color:var(--ink)}
-.card p{color:var(--muted);font-size:.95rem}
-/* handshake band */
-.band{position:relative;min-height:560px;display:flex;flex-direction:column;justify-content:space-between;align-items:center;text-align:center;padding:48px 0;border-radius:22px;overflow:hidden;border:1px solid var(--line);box-shadow:var(--glow)}
-.band img.bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:contrast(1.1) brightness(1.04) saturate(1.12);z-index:0}
-.band::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(2,6,11,.72) 0%,transparent 26%,transparent 70%,rgba(2,6,11,.8) 100%);z-index:1}
-.band .top,.band .bot{position:relative;z-index:2;max-width:760px;padding:0 20px}
-.band h2{margin:0}
-.band .bot{color:#cfe9f5;font-size:1.15rem;text-shadow:0 2px 14px rgba(0,0,0,.8)}
-/* capabilities hologram */
-.cap-holo{max-width:960px;margin:34px auto 0;position:relative;border-radius:18px;overflow:hidden;border:1px solid var(--line);box-shadow:var(--glow);background:#02060b}
-.cap-stage{position:relative;aspect-ratio:16/9}
-.cap-slide{position:absolute;inset:0;opacity:0;transition:opacity 1s ease}
-.cap-slide.active{opacity:1}
-.cap-slide img{width:100%;height:100%;object-fit:cover;filter:contrast(1.25) brightness(1.12) saturate(1.25) drop-shadow(0 0 14px rgba(63,224,232,.5));image-rendering:-webkit-optimize-contrast}
-.cap-stage .scan{position:absolute;inset:0;background:repeating-linear-gradient(180deg,rgba(63,224,232,.05) 0 2px,transparent 2px 5px);mix-blend-mode:screen;pointer-events:none;animation:scan 6s linear infinite}
-.cap-dots{display:flex;gap:.5rem;justify-content:center;margin-top:16px}
-.cap-dots button{width:34px;height:5px;border-radius:3px;border:none;background:rgba(159,180,199,.35);cursor:pointer;transition:.2s}
-.cap-dots button.active{background:var(--teal);box-shadow:var(--glow)}
-/* diversity marquee */
-.divers{overflow:hidden;position:relative}
-.marquee{display:flex;gap:20px;width:max-content;animation:slide 60s linear infinite}
-.divers:hover .marquee{animation-play-state:paused}
-@keyframes slide{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-.face{flex:0 0 auto;width:340px;border-radius:14px;overflow:hidden;border:1px solid var(--line);box-shadow:0 0 20px rgba(63,224,232,.12)}
-.face img{width:100%;height:100%;display:block;object-fit:cover;filter:contrast(1.18) brightness(1.06) saturate(1.12) drop-shadow(0 0 8px rgba(63,224,232,.25));image-rendering:-webkit-optimize-contrast}
-.divers::before,.divers::after{content:"";position:absolute;top:0;bottom:0;width:120px;z-index:2;pointer-events:none}
-.divers::before{left:0;background:linear-gradient(90deg,var(--bg),transparent)}
-.divers::after{right:0;background:linear-gradient(270deg,var(--bg),transparent)}
-/* steps */
-.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:36px;counter-reset:s}
-.step{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:26px;position:relative}
-.step::before{counter-increment:s;content:counter(s);position:absolute;top:-16px;left:22px;width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,var(--teal),var(--teal2));color:#02121a;font-weight:800;display:flex;align-items:center;justify-content:center;box-shadow:var(--glow)}
-.step h3{margin:.4rem 0 .3rem;font-size:1.1rem}
-.step p{color:var(--muted);font-size:.95rem}
-/* CTA */
-.cta{text-align:center;background:radial-gradient(120% 100% at 50% 0%,rgba(63,224,232,.12),transparent 60%);border:1px solid var(--line);border-radius:22px;padding:56px 24px;box-shadow:var(--glow)}
-.cta .phone{font-size:1.4rem;color:var(--teal);font-weight:800;margin-top:1rem;display:inline-flex;gap:.5rem;align-items:center}
-/* footer */
-footer{border-top:1px solid var(--line);padding:48px 0 30px;color:var(--muted)}
-.foot-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:30px;margin-bottom:28px}
-.foot-grid img{height:56px;margin-bottom:.8rem;filter:drop-shadow(0 0 8px rgba(63,224,232,.4))}
-.foot-grid h4{color:var(--teal);letter-spacing:.2em;font-size:.72rem;text-transform:uppercase;margin-bottom:.8rem}
-.foot-grid a{display:block;color:var(--muted);margin-bottom:.4rem;transition:.2s}
-.foot-grid a:hover{color:var(--teal)}
-.copy{border-top:1px solid var(--line);padding-top:18px;font-size:.85rem;text-align:center}
-@media(max-width:860px){
-  .hero-grid,.feat-grid,.steps,.foot-grid{grid-template-columns:1fr}
-  .navlinks{display:none}
-  .menubtn{display:block}
-  .navlinks.open{display:flex;position:absolute;top:74px;left:0;right:0;flex-direction:column;background:var(--bg2);padding:20px;border-bottom:1px solid var(--line)}
-}
-</style>
-</head>
-<body>
-<header>
-  <div class="wrap nav">
-    <a class="brand" href="#top"><img src="logo.png" alt="Noted Autonomous"></a>
-    <nav class="navlinks" id="nav">
-      <a href="#choose">Receptionists</a>
-      <a href="#features">Features</a>
-      <a href="#capabilities">Customize</a>
-      <a href="#how">How it works</a>
-      <a class="navphone" href="tel:+27600702368">+27 60 070 2368</a>
-      <a class="btn" href="tel:+27600702368">Call Nikita</a>
-    </nav>
-    <button class="menubtn" id="menubtn" aria-label="Menu">&#9776;</button>
-  </div>
-</header>
-
-<main id="top">
-<!-- HERO -->
-<section class="hero">
-  <div class="wrap hero-grid">
-    <div>
-      <div class="live"><span class="dot"></span> AI Voice Receptionist · Live 24/7</div>
-      <p class="tag">Receptionist AI</p>
-      <h1>Meet your <span class="hl">AI receptionist.</span> Never miss another call.</h1>
-      <p class="sub">Noted Autonomous answers every call around the clock, captures caller details, books appointments, and alerts your team instantly — so every lead is noted. Choose your receptionist's voice, accent and name.</p>
-      <div class="hero-cta">
-        <a class="btn" href="tel:+27600702368">📞 Call Nikita now</a>
-        <a class="btn ghost" href="#choose">Choose your receptionist</a>
-      </div>
-    </div>
-    <div>
-      <div class="holo">
-        <div class="holo-stage" id="avatarStage">
-          <div class="scan"></div>
-          <button class="holo-ctrl prev" id="avPrev" aria-label="Previous">&#8249;</button>
-          <button class="holo-ctrl next" id="avNext" aria-label="Next">&#8250;</button>
-        </div>
-        <div class="holo-cap" id="avatarCap"></div>
-        <div class="holo-dots" id="avatarDots"></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- CHOOSE anchor duplicate for nav -->
-<span id="choose"></span>
-
-<!-- FEATURES -->
-<section id="features">
-  <div class="wrap center">
-    <p class="tag">Why Noted Autonomous</p>
-    <h2>Your front desk, fully autonomous</h2>
-    <p class="sub">Nikita handles your inbound calls with a natural, professional voice — and makes sure nothing slips through the cracks.</p>
-    <div class="feat-grid">
-      <div class="card"><div class="ic">📞</div><h3>Answers 24/7</h3><p>Every call is picked up instantly, day or night, weekends and holidays included. No voicemail, no missed opportunities.</p></div>
-      <div class="card"><div class="ic">📝</div><h3>Captures every detail</h3><p>Nikita notes the caller's name, number, and reason for calling, then structures it neatly for your team.</p></div>
-      <div class="card"><div class="ic">⚡</div><h3>Instant notifications</h3><p>The moment a call ends, your team gets an SMS and email with the full summary — ready to follow up.</p></div>
-      <div class="card"><div class="ic">📅</div><h3>Books appointments</h3><p>Qualified callers are guided to book a demo or callback, so your calendar fills itself.</p></div>
-      <div class="card"><div class="ic">🎙️</div><h3>Natural conversation</h3><p>A warm, human-sounding voice that represents your brand and puts callers at ease.</p></div>
-      <div class="card"><div class="ic">🔒</div><h3>Reliable &amp; consistent</h3><p>Nikita never has an off day — the same polished greeting and process on every single call.</p></div>
-    </div>
-  </div>
-</section>
-
-<!-- HANDSHAKE BAND -->
-<section>
-  <div class="wrap">
-    <div class="band">
-      <img class="bg" src="handshake.png" alt="A businesswoman shaking hands with her AI receptionist">
-      <div class="top"><h2>Working hand in hand</h2></div>
-      <div class="bot">We take the load off your hands — you stay in full control.</div>
-    </div>
-  </div>
-</section>
-
-<!-- CAPABILITIES HOLOGRAM -->
-<section id="capabilities">
-  <div class="wrap center">
-    <p class="tag">Make it yours</p>
-    <h2>Customize your receptionist</h2>
-    <p class="sub">Give your AI receptionist any name, any accent — or go one step further and create another you.</p>
-    <div class="cap-holo">
-      <div class="cap-stage" id="capStage"><div class="scan"></div></div>
-    </div>
-    <div class="cap-dots" id="capDots"></div>
-  </div>
-</section>
-
-<!-- DIVERSITY -->
-<section>
-  <div class="wrap center">
-    <p class="tag">A receptionist for everyone</p>
-    <h2>Every voice. Every face. Every language.</h2>
-    <p class="sub">Your receptionist can represent your brand and your community — whoever your callers are.</p>
-  </div>
-  <div class="divers" style="margin-top:36px">
-    <div class="marquee" id="marquee"></div>
-  </div>
-</section>
-
-<!-- HOW IT WORKS -->
-<section id="how">
-  <div class="wrap center">
-    <p class="tag">How it works</p>
-    <h2>Live in three simple steps</h2>
-    <p class="sub">From first ring to follow-up, Noted Autonomous keeps your business connected.</p>
-    <div class="steps">
-      <div class="step"><h3>Nikita answers</h3><p>Your calls route to Nikita, who greets each caller instantly with your custom script.</p></div>
-      <div class="step"><h3>She captures the details</h3><p>Nikita gathers the caller's name, number, and needs — and books a demo or callback when they're ready.</p></div>
-      <div class="step"><h3>Your team is notified</h3><p>An SMS and email summary lands with your team the second the call ends, so you can follow up right away.</p></div>
-    </div>
-  </div>
-</section>
-
-<!-- CTA -->
-<section>
-  <div class="wrap">
-    <div class="cta">
-      <p class="tag">Ready to capture every call?</p>
-      <h2>Let Nikita handle your front desk</h2>
-      <p class="sub" style="margin:0 auto">Focus on running the business while Noted Autonomous answers, captures, and follows up. Talk to our team about a setup tailored to you.</p>
-      <a class="phone" href="tel:+27600702368">📞 Call +27 60 070 2368</a>
-      <div style="margin-top:1.4rem"><a class="btn" href="tel:+27600702368">Book a demo</a></div>
-    </div>
-  </div>
-</section>
-</main>
-
-<footer>
-  <div class="wrap">
-    <div class="foot-grid">
-      <div>
-        <img src="logo.png" alt="Noted Autonomous">
-        <p>AI voice receptionists that answer every call, capture every lead, and keep your team in the loop — 24/7.</p>
-      </div>
-      <div>
-        <h4>Product</h4>
-        <a href="#features">Features</a>
-        <a href="#choose">Receptionists</a>
-        <a href="#how">How it works</a>
-      </div>
-      <div>
-        <h4>Contact</h4>
-        <a class="navphone" href="tel:+27600702368">+27 60 070 2368</a>
-        <a href="tel:+27600702368">Book a demo</a>
-      </div>
-    </div>
-    <div class="copy">© 2026 Noted Autonomous. All rights reserved. · Receptionist AI</div>
-  </div>
-</footer>
-
-<script>
-// Avatar selector hologram
-var avatars=[
- {img:'avatar-nikita.png',name:'Nikita'},
- {img:'avatar-sophie.png',name:'Sophie'},
- {img:'avatar-davis.png',name:'Davis'},
- {img:'avatar-chloe.png',name:'Chloe'},
- {img:'avatar-alejandro.png',name:'Alejandro'}
-];
-var stage=document.getElementById('avatarStage');
-var dots=document.getElementById('avatarDots');
-var cap=document.getElementById('avatarCap');
-avatars.forEach(function(a,i){
-  var d=document.createElement('div');d.className='holo-slide'+(i===0?' active':'');
-  var im=document.createElement('img');im.src=a.img;im.alt=a.name;im.loading=i===0?'eager':'lazy';
-  d.appendChild(im);stage.appendChild(d);
-  var b=document.createElement('button');if(i===0)b.className='active';b.setAttribute('aria-label',a.name);
-  b.addEventListener('click',function(){go(i)});dots.appendChild(b);
-});
-var slides=stage.querySelectorAll('.holo-slide');var dbtns=dots.querySelectorAll('button');var idx=0;
-function render(){slides.forEach(function(s,i){s.classList.toggle('active',i===idx)});dbtns.forEach(function(b,i){b.classList.toggle('active',i===idx)});cap.innerHTML='<b>'+avatars[idx].name+'</b> — your AI receptionist';}
-function go(i){idx=(i+avatars.length)%avatars.length;render();reset();}
-render();
-var timer=setInterval(function(){go(idx+1)},3800);
-function reset(){clearInterval(timer);timer=setInterval(function(){go(idx+1)},3800);}
-document.getElementById('avNext').addEventListener('click',function(){go(idx+1)});
-document.getElementById('avPrev').addEventListener('click',function(){go(idx-1)});
-
-// Capabilities hologram: name -> accent -> clone
+var timer=setInterval(function(){go(idx+1);},3800);
+function reset(){clearInterval(timer);timer=setInterval(function(){go(idx+1);},3800);}
+document.getElementById('avNext').addEventListener('click',function(){go(idx+1);});
+document.getElementById('avPrev').addEventListener('click',function(){go(idx-1);});
 var caps=['cap-name.png','cap-accent.png','cap-clone.png'];
 var capNames=['Any name','Any accent','Even clone you'];
 var cstage=document.getElementById('capStage');var cdots=document.getElementById('capDots');
@@ -611,25 +280,21 @@ caps.forEach(function(src,i){
   var im=document.createElement('img');im.src=src;im.alt=capNames[i];im.loading=i===0?'eager':'lazy';
   d.appendChild(im);cstage.appendChild(d);
   var b=document.createElement('button');if(i===0)b.className='active';b.setAttribute('aria-label',capNames[i]);
-  b.addEventListener('click',function(){cgo(i)});cdots.appendChild(b);
+  b.addEventListener('click',function(){cgo(i);});cdots.appendChild(b);
 });
 var cslides=cstage.querySelectorAll('.cap-slide');var cbtns=cdots.querySelectorAll('button');var cidx=0;
-function crender(){cslides.forEach(function(s,i){s.classList.toggle('active',i===cidx)});cbtns.forEach(function(b,i){b.classList.toggle('active',i===cidx)});}
+function crender(){cslides.forEach(function(s,i){s.classList.toggle('active',i===cidx);});cbtns.forEach(function(b,i){b.classList.toggle('active',i===cidx);});}
 function cgo(i){cidx=(i+caps.length)%caps.length;crender();ctr();}
-var ctimer=setInterval(function(){cgo(cidx+1)},4200);
-function ctr(){clearInterval(ctimer);ctimer=setInterval(function(){cgo(cidx+1)},4200);}
-
-// Diversity marquee (duplicate list for seamless loop)
-var faces=[];for(var i=1;i<=13;i++){faces.push('face-'+String(i).padStart(2,'0')+'.png');}
+var ctimer=setInterval(function(){cgo(cidx+1);},4200);
+function ctr(){clearInterval(ctimer);ctimer=setInterval(function(){cgo(cidx+1);},4200);}
+var faces=[];for(var i=1;i<=13;i++){faces.push('face-'+(i<10?'0':'')+i+'.png');}
 var mq=document.getElementById('marquee');
 faces.concat(faces).forEach(function(src){
   var f=document.createElement('div');f.className='face';
   var im=document.createElement('img');im.src=src;im.alt='Noted Autonomous receptionist';im.loading='lazy';
   f.appendChild(im);mq.appendChild(f);
 });
-
-// mobile menu
-document.getElementById('menubtn').addEventListener('click',function(){document.getElementById('nav').classList.toggle('open')});
+document.getElementById('menubtn').addEventListener('click',function(){document.getElementById('nav').classList.toggle('open');});
 </script>
 </body>
-</html>
+                                            </html>
