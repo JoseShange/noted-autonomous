@@ -125,6 +125,23 @@ footer{border-top:1px solid var(--line);padding:48px 0 30px;color:var(--muted)}
 .faq-item summary::after{content:"+";color:var(--teal);font-size:1.4rem;font-weight:700;transition:transform .2s}
 .faq-item[open] summary::after{transform:rotate(45deg)}
 .faq-item p{color:var(--muted);margin:0 0 18px;font-size:.98rem;line-height:1.6}
+.tabbar{position:sticky;top:74px;z-index:40;background:rgba(4,7,12,.92);backdrop-filter:blur(12px);border-top:1px solid var(--line);border-bottom:1px solid var(--line);scroll-margin-top:74px}
+.tabbar .wrap{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none;padding-top:11px;padding-bottom:11px}
+.tabbar .wrap::-webkit-scrollbar{display:none}
+.tabbar a{flex:0 0 auto;padding:.55rem 1.15rem;border-radius:999px;border:1px solid transparent;color:var(--muted);font-size:.92rem;font-weight:600;white-space:nowrap;transition:.2s;cursor:pointer}
+.tabbar a:hover{color:var(--teal);border-color:var(--line)}
+.tabbar a.active{color:#02121a;background:linear-gradient(135deg,var(--teal),var(--teal2));box-shadow:var(--glow)}
+.panel{display:none}
+.panel.on{display:block;animation:panelin .3s ease}
+.panel>section:first-child{padding-top:54px}
+.panel>section:last-child{padding-bottom:54px}
+@keyframes panelin{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+@media(prefers-reduced-motion:reduce){.panel.on{animation:none}}
+@media(max-width:860px){.tabbar .wrap{padding-left:16px;padding-right:16px}.tabbar a{font-size:.88rem;padding:.5rem 1rem}
+  .hero{padding:32px 0 18px}
+  .hero-grid{gap:20px}
+  .holo{padding:11px}
+  .panel>section:first-child{padding-top:40px}}
 </style>
 <meta name="keywords" content="AI receptionist, AI voice receptionist, virtual receptionist South Africa, best AI receptionist, top AI receptionists, AI answering service, 24/7 call answering, West Coast AI receptionist, automated receptionist, Noted Autonomous">
 <meta name="robots" content="index, follow">
@@ -132,7 +149,7 @@ footer{border-top:1px solid var(--line);padding:48px 0 30px;color:var(--muted)}
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Noted Autonomous">
 <meta property="og:title" content="Noted Autonomous — AI Voice Receptionists">
-<meta property="og:description" content="An AI receptionist that answers every call 24/7 — takes orders and bookings, captures every caller's name and number, and sends your team a summary the second the call ends.">
+<meta property="og:description" content="An AI receptionist that answers every call 24/7 — takes booking requests, captures every caller's name and number, and sends your team a summary the second the call ends.">
 <meta property="og:url" content="https://notedautonomous.com/">
 <meta property="og:image" content="https://notedautonomous.com/logo.png">
 <meta property="og:image:secure_url" content="https://notedautonomous.com/logo.png">
@@ -143,7 +160,7 @@ footer{border-top:1px solid var(--line);padding:48px 0 30px;color:var(--muted)}
 <meta property="og:locale" content="en_ZA">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Noted Autonomous — AI Voice Receptionists">
-<meta name="twitter:description" content="An AI receptionist that answers every call 24/7 — takes orders and bookings, captures every caller's name and number, and sends your team a summary the second the call ends.">
+<meta name="twitter:description" content="An AI receptionist that answers every call 24/7 — takes booking requests, captures every caller's name and number, and sends your team a summary the second the call ends.">
 <meta name="twitter:image" content="https://notedautonomous.com/logo.png">
 <script type="application/ld+json">
 {
@@ -152,7 +169,7 @@ footer{border-top:1px solid var(--line);padding:48px 0 30px;color:var(--muted)}
   "@id": "https://notedautonomous.com/#business",
   "name": "Noted Autonomous",
   "alternateName": "Noted Autonomous Receptionist AI",
-  "description": "Noted Autonomous provides AI voice receptionists that answer every call 24/7, capture every lead, book appointments, and keep your team informed with instant call summaries.",
+  "description": "Noted Autonomous provides AI voice receptionists that answer every call 24/7, capture every lead, take booking requests, and keep your team informed with instant call summaries.",
   "url": "https://notedautonomous.com/",
   "logo": "https://notedautonomous.com/logo.png",
   "image": "https://notedautonomous.com/logo.png",
@@ -164,13 +181,13 @@ footer{border-top:1px solid var(--line);padding:48px 0 30px;color:var(--muted)}
     { "@type": "AdministrativeArea", "name": "Western Cape" },
     { "@type": "Place", "name": "West Coast" }
   ],
-  "knowsAbout": ["AI receptionist", "virtual receptionist", "AI answering service", "24/7 call answering", "appointment booking"],
+  "knowsAbout": ["AI receptionist", "virtual receptionist", "AI answering service", "24/7 call answering", "call screening"],
   "makesOffer": {
     "@type": "Offer",
     "itemOffered": {
       "@type": "Service",
       "name": "AI Voice Receptionist",
-      "description": "24/7 AI voice receptionist that answers calls, qualifies leads, books appointments and sends instant summaries."
+      "description": "24/7 AI voice receptionist that answers calls, qualifies leads, takes booking requests and sends instant summaries."
     }
   },
   "contactPoint": {
@@ -200,7 +217,7 @@ footer{border-top:1px solid var(--line);padding:48px 0 30px;color:var(--muted)}
       "name": "What is Noted Autonomous?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Noted Autonomous is an AI voice receptionist service that answers your business calls 24/7, captures every caller's details, books appointments, and instantly sends your team a summary of each call."
+        "text": "Noted Autonomous is an AI voice receptionist service that answers your business calls 24/7, captures every caller's details, takes booking requests, and instantly sends your team a summary of each call."
       }
     },
     {
@@ -244,11 +261,12 @@ footer{border-top:1px solid var(--line);padding:48px 0 30px;color:var(--muted)}
   <div class="wrap nav">
     <a class="brand" href="#top"><img src="logo.png" alt="Noted Autonomous"></a>
     <nav class="navlinks" id="nav">
-      <a href="#choose">Receptionists</a>
       <a href="#features">Features</a>
+      <a href="#choose">Receptionists</a>
       <a href="#capabilities">Customize</a>
       <a href="#how">How it works</a>
       <a href="#pricing">Pricing</a>
+      <a href="#faq">FAQ</a>
       <a class="navphone" href="tel:+27600702368">+27 60 070 2368</a>
       <a class="btn" href="tel:+27600702368" style="color:#000">Contact us</a>
     </nav>
@@ -262,7 +280,7 @@ footer{border-top:1px solid var(--line);padding:48px 0 30px;color:var(--muted)}
       <div class="live"><span class="dot"></span> AI Voice Receptionist · Live 24/7</div>
       <p class="tag">Receptionist AI</p>
       <h1>Meet <span style="color:#3fe0e8">YOUR new AI Receptionist.</span></h1>
-      <p class="sub">Noted Autonomous Receptionists answer every call around the clock, captures caller details, books appointments, and alerts your team instantly — so every lead is NOTED. Choose your receptionist's voice, accent and name.</p>
+      <p class="sub">Noted Autonomous Receptionists answer every call around the clock, captures caller details, takes booking requests, and alerts your team instantly — so every lead is NOTED. Choose your receptionist's voice, accent and name.</p>
       <div class="hero-cta">
         <a class="btn" href="tel:+27600702368">📞 Call Nikita now</a>
       </div>
@@ -280,19 +298,42 @@ footer{border-top:1px solid var(--line);padding:48px 0 30px;color:var(--muted)}
     </div>
   </div>
 </section>
-<span id="choose"></span>
-<section id="features">
+<nav class="tabbar" id="tabbar" role="tablist" aria-label="Sections">
+  <div class="wrap">
+    <a href="#features" data-tab="features" role="tab" id="tb-features" aria-controls="features" aria-selected="true">Features</a>
+    <a href="#choose" data-tab="choose" role="tab" id="tb-choose" aria-controls="choose" aria-selected="false">Receptionists</a>
+    <a href="#capabilities" data-tab="capabilities" role="tab" id="tb-capabilities" aria-controls="capabilities" aria-selected="false">Customize</a>
+    <a href="#how" data-tab="how" role="tab" id="tb-how" aria-controls="how" aria-selected="false">How it works</a>
+    <a href="#pricing" data-tab="pricing" role="tab" id="tb-pricing" aria-controls="pricing" aria-selected="false">Pricing</a>
+    <a href="#faq" data-tab="faq" role="tab" id="tb-faq" aria-controls="faq" aria-selected="false">FAQ</a>
+  </div>
+</nav>
+<div class="panels">
+<div class="panel" id="choose" role="tabpanel" aria-labelledby="tb-choose">
+<section>
+  <div class="wrap center">
+    <p class="tag">A receptionist for everyone</p>
+    <h2>Every voice. Every face. Every language.</h2>
+    <p class="sub">Your receptionist can represent your brand and your community — whoever your callers are.</p>
+  </div>
+  <div class="divers" style="margin-top:36px">
+    <div class="marquee" id="marquee"></div>
+  </div>
+</section>
+</div>
+<div class="panel on" id="features" role="tabpanel" aria-labelledby="tb-features">
+<section>
   <div class="wrap center">
     <p class="tag">Why Noted Autonomous</p>
     <h2>Your front desk, fully autonomous</h2>
     <p class="sub">Your AI Receptionist handles your inbound calls — and makes sure nothing slips through the cracks.</p>
     <div class="feat-grid">
       <div class="card"><div class="ic">📞</div><h3>24/7 Overflow & After-Hours</h3><p>Never miss a lead when your team is busy or off the clock. Calls instantly transfer to your AI receptionist when your lines are engaged, ensuring 100% answer coverage.</p></div>
-      <div class="card"><div class="ic">📝</div><h3>Automated Calendar Booking</h3><p>Turn inbound calls directly into confirmed appointments. The AI checks live availability, locks in the slot, and syncs directly with your team's calendar.</p></div>
-      <div class="card"><div class="ic">⚡</div><h3>Intelligent Call Routing & Spam Blocks</h3><p>Route important calls to a real person. Smart caller screening filters out spam.</p></div>
-      <div class="card"><div class="ic">📅</div><h3>Instant Post-Call Summaries</h3><p>Receive key takeaways, caller details, and action items via SMS or email immediately after every conversation so your team can follow up effortlessly.</p></div>
-      <div class="card"><div class="ic">🎙️</div><h3>CRM & Tool Integration</h3><p>Every caller profile, audio log, and note automatically syncs into your existing database with zero manual data entry required.</p></div>
-      <div class="card"><div class="ic">🔒</div><h3>Human-Grade Voice & Latency</h3><p>Deliver a warm, natural conversational experience tailored to your exact brand tone, ensuring callers feel valued and expertly assisted every time.</p></div>
+      <div class="card"><div class="ic">📅</div><h3>Appointments Captured on the Call</h3><p>When a caller wants to book, your receptionist takes the day, the time and their details on the spot and sends it to you the second the call ends — so you confirm from your phone, not from voicemail.</p></div>
+      <div class="card"><div class="ic">🛡️</div><h3>Caller Screening</h3><p>Your receptionist finds out who is calling and what they want before it ever reaches you, so cold sales calls and time-wasters stop interrupting your day.</p></div>
+      <div class="card"><div class="ic">⚡</div><h3>Instant Post-Call Summaries</h3><p>Receive key takeaways, caller details, and action items via SMS or email immediately after every conversation so your team can follow up effortlessly.</p></div>
+      <div class="card"><div class="ic">🎧</div><h3>Every Call Recorded</h3><p>The full audio of every call, with the caller's name, number and a written summary, delivered to you by SMS and email the moment they hang up.</p></div>
+      <div class="card"><div class="ic">🎙️</div><h3>Human-Grade Voice & Latency</h3><p>Deliver a warm, natural conversational experience tailored to your exact brand tone, ensuring callers feel valued and expertly assisted every time.</p></div>
     </div>
   </div>
 </section>
@@ -305,7 +346,9 @@ footer{border-top:1px solid var(--line);padding:48px 0 30px;color:var(--muted)}
     </div>
   </div>
 </section>
-<section id="capabilities">
+</div>
+<div class="panel" id="capabilities" role="tabpanel" aria-labelledby="tb-capabilities">
+<section>
   <div class="wrap center">
     <p class="tag">Make it yours</p>
     <h2>Customize your receptionist</h2>
@@ -316,17 +359,9 @@ footer{border-top:1px solid var(--line);padding:48px 0 30px;color:var(--muted)}
     <div class="cap-dots" id="capDots"></div>
   </div>
 </section>
+</div>
+<div class="panel" id="how" role="tabpanel" aria-labelledby="tb-how">
 <section>
-  <div class="wrap center">
-    <p class="tag">A receptionist for everyone</p>
-    <h2>Every voice. Every face. Every language.</h2>
-    <p class="sub">Your receptionist can represent your brand and your community — whoever your callers are.</p>
-  </div>
-  <div class="divers" style="margin-top:36px">
-    <div class="marquee" id="marquee"></div>
-  </div>
-</section>
-<section id="how">
   <div class="wrap center">
     <p class="tag">How it works</p>
     <h2>Live in three simple steps</h2>
@@ -338,7 +373,9 @@ footer{border-top:1px solid var(--line);padding:48px 0 30px;color:var(--muted)}
     </div>
   </div>
 </section>
-<section id="pricing">
+</div>
+<div class="panel" id="pricing" role="tabpanel" aria-labelledby="tb-pricing">
+<section>
   <style>
   .price-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:40px;align-items:stretch;text-align:left}
   .price-card{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:30px 26px;position:relative;transition:.25s;display:flex;flex-direction:column}
@@ -374,7 +411,7 @@ footer{border-top:1px solid var(--line);padding:48px 0 30px;color:var(--muted)}
           <li>Captures the caller's name, number and what they want</li>
           <li>SMS and email to you the moment the call ends</li>
           <li>Every call recorded, with the audio sent straight to you</li>
-          <li>English or Afrikaans</li>
+          <li>Natural English, tuned for South African accents</li>
         </ul>
         <a class="btn ghost" href="tel:+27600702368">Talk to us</a>
       </div>
@@ -385,10 +422,10 @@ footer{border-top:1px solid var(--line);padding:48px 0 30px;color:var(--muted)}
         <div class="price-amt">R3,950<span> / month</span></div>
         <p class="price-mins">600 call-minutes included</p>
         <ul class="price-feat">
-          <li>Everything in Starter</li>
-          <li>Books appointments straight into your calendar</li>
-          <li>Transfers live calls to the right person</li>
-          <li>Screens and blocks spam callers</li>
+          <li>Everything in Starter, with triple the minutes</li>
+          <li>Takes appointment requests &mdash; day, time and contact details</li>
+          <li>Screens callers and filters out cold sales calls</li>
+          <li>Answers your customers&rsquo; common questions from your own script</li>
           <li>Your choice of voice, name and accent</li>
         </ul>
         <a class="btn" href="tel:+27600702368" style="color:#02121a">Talk to us</a>
@@ -401,8 +438,8 @@ footer{border-top:1px solid var(--line);padding:48px 0 30px;color:var(--muted)}
         <ul class="price-feat">
           <li>Everything in Business</li>
           <li>A separate receptionist per branch or department</li>
-          <li>Routing rules built around how you actually work</li>
-          <li>Integration with the systems you already use</li>
+          <li>Its own number, script and notification list for each one</li>
+          <li>We build the flow around how your business actually runs</li>
           <li>Priority support</li>
         </ul>
         <a class="btn ghost" href="tel:+27600702368">Talk to us</a>
@@ -416,12 +453,14 @@ footer{border-top:1px solid var(--line);padding:48px 0 30px;color:var(--muted)}
     </div>
   </div>
 </section>
-<section id="faq">
+</div>
+<div class="panel" id="faq" role="tabpanel" aria-labelledby="tb-faq">
+<section>
   <div class="wrap">
     <p class="tag" style="text-align:center">FAQ</p>
     <h2 style="text-align:center">Questions, answered</h2>
     <div class="faq-list">
-      <details class="faq-item"><summary>What is Noted Autonomous?</summary><p>Noted Autonomous is an AI voice receptionist service that answers your business calls 24/7, captures every caller's details, books appointments, and instantly sends your team a summary of each call.</p></details>
+      <details class="faq-item"><summary>What is Noted Autonomous?</summary><p>Noted Autonomous is an AI voice receptionist service that answers your business calls 24/7, captures every caller's details, takes booking requests, and instantly sends your team a summary of each call.</p></details>
       <details class="faq-item"><summary>Does the AI receptionist work 24/7?</summary><p>Yes. The Noted Autonomous receptionist answers every call around the clock — including after hours, weekends and holidays — so you never miss a lead.</p></details>
       <details class="faq-item"><summary>Can I choose my receptionist's voice, accent and name?</summary><p>Yes. You can customise your AI receptionist's voice, accent and name so it represents your brand exactly the way you want.</p></details>
       <details class="faq-item"><summary>Which areas does Noted Autonomous serve?</summary><p>Noted Autonomous serves businesses across South Africa, including the Western Cape and West Coast, and can operate for clients anywhere.</p></details>
@@ -429,6 +468,8 @@ footer{border-top:1px solid var(--line);padding:48px 0 30px;color:var(--muted)}
     </div>
   </div>
 </section>
+</div>
+</div>
 <section>
   <div class="wrap">
     <div class="cta">
@@ -453,6 +494,8 @@ footer{border-top:1px solid var(--line);padding:48px 0 30px;color:var(--muted)}
         <a href="#features">Features</a>
         <a href="#choose">Receptionists</a>
         <a href="#how">How it works</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#faq">FAQ</a>
       </div>
       <div>
         <h4>Contact</h4>
@@ -512,6 +555,36 @@ faces.concat(faces).forEach(function(src){
   f.appendChild(im);mq.appendChild(f);
 });
 document.getElementById('menubtn').addEventListener('click',function(){document.getElementById('nav').classList.toggle('open');});
+(function(){
+  var TABS=['features','choose','capabilities','how','pricing','faq'];
+  var bar=document.getElementById('tabbar');
+  function apply(id){
+    TABS.forEach(function(t){var p=document.getElementById(t);if(p)p.classList.toggle('on',t===id);});
+    [].forEach.call(document.querySelectorAll('[data-tab]'),function(b){
+      var on=b.getAttribute('data-tab')===id;
+      b.classList.toggle('active',on);b.setAttribute('aria-selected',on?'true':'false');
+      if(on&&bar&&bar.contains(b)&&b.scrollIntoView){try{b.scrollIntoView({inline:'center',block:'nearest'});}catch(e){}}
+    });
+  }
+  function go(id,scroll){
+    if(TABS.indexOf(id)<0)id=TABS[0];
+    apply(id);
+    if(scroll&&bar){window.scrollTo({top:bar.getBoundingClientRect().top+window.pageYOffset-73,behavior:'smooth'});}
+  }
+  document.addEventListener('click',function(e){
+    var a=e.target&&e.target.closest?e.target.closest('a[href^="#"]'):null;
+    if(!a)return;
+    var id=a.getAttribute('href').slice(1);
+    if(TABS.indexOf(id)<0)return;
+    e.preventDefault();
+    if(history.replaceState)history.replaceState(null,'','#'+id);
+    var nv=document.getElementById('nav');if(nv)nv.classList.remove('open');
+    go(id,true);
+  });
+  window.addEventListener('hashchange',function(){go(location.hash.slice(1),true);});
+  var s=location.hash.slice(1);
+  go(s,TABS.indexOf(s)>=0);
+})();
 </script>
 </body>
                                             </html>
