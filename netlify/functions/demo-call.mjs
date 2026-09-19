@@ -87,7 +87,24 @@ export default async (req) => {
   }
 
   // Trim: a pasted key often carries a trailing newline or space, which Retell rejects as invalid.
-  const apiKey = (process.env.RETELL_API_KEY || "").trim();
+  const rawKey = process.env.RETELL_API_KEY || "";
+  const apiKey = rawKey.trim();
+
+  // Temporary diagnostic. Reports the SHAPE of the stored key, never its value.
+  // Remove before merging to main.
+  if (new URL(req.url).searchParams.get("diag") === "1") {
+    return json({
+      present: rawKey.length > 0,
+      length_raw: rawKey.length,
+      length_trimmed: apiKey.length,
+      starts_with_key_prefix: apiKey.startsWith("key_"),
+      had_surrounding_whitespace: rawKey !== apiKey,
+      has_quotes: /["'`]/.test(apiKey),
+      has_inner_whitespace: /\s/.test(apiKey),
+      charset_ok: /^[A-Za-z0-9_-]+$/.test(apiKey),
+    });
+  }
+
   if (!apiKey) return json({ error: "not_configured" }, 500);
 
   let tierKey = "business";
