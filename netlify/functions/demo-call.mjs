@@ -86,7 +86,8 @@ export default async (req) => {
     if (!ok) return json({ error: "forbidden_origin" }, 403);
   }
 
-  const apiKey = process.env.RETELL_API_KEY;
+  // Trim: a pasted key often carries a trailing newline or space, which Retell rejects as invalid.
+  const apiKey = (process.env.RETELL_API_KEY || "").trim();
   if (!apiKey) return json({ error: "not_configured" }, 500);
 
   let tierKey = "business";
