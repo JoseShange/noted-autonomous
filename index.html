@@ -536,11 +536,12 @@ document.getElementById('menubtn').addEventListener('click',function(){document.
 .demo-status{color:var(--muted);font-size:.95rem;min-height:1.5em}
 .demo-status.err{color:#ff9a8b}
 .demo-timer{font-size:.85rem;color:var(--muted);opacity:.7;margin-top:.35rem;min-height:1.2em;font-variant-numeric:tabular-nums}
+.demo-actions[hidden]{display:none}
 .demo-actions{display:flex;gap:10px;justify-content:center;margin-top:1.3rem}
 .demo-actions .btn{flex:1;justify-content:center;font-size:.92rem;padding:.7rem 1rem}
 .demo-end{background:linear-gradient(135deg,#ff7a6a,#e04b56)!important;color:#fff!important;box-shadow:0 0 18px rgba(224,75,86,.5)!important}
 .demo-note{margin-top:1.1rem;font-size:.76rem;color:var(--muted);opacity:.65;line-height:1.5}
-.demo-phone{display:inline-block;margin-top:.6rem;color:var(--teal);font-weight:700}
+.demo-phone{display:block;margin-top:.55rem;color:var(--teal);font-weight:700}
 @media(max-width:420px){.demo-card{padding:30px 20px 22px}.demo-face{width:168px}}
 </style>
 <div class="demo-ov" id="demoOv" hidden>
@@ -614,10 +615,12 @@ async function start(tier){
         : r.status === 503
         ? 'The demo line is busy right now. Please phone the number below.'
         : "Couldn't start the demo. Please phone the number below.";
+      el('demoName').textContent = 'Demo unavailable';
       say(msg, true);
       return;
     }
   } catch (e) {
+    el('demoName').textContent = 'Demo unavailable';
     say("Couldn't reach the demo line. Please phone the number below.", true);
     return;
   }
