@@ -164,7 +164,9 @@ export default async (req) => {
   if (!res.ok) {
     const detail = await res.text().catch(() => "");
     console.error("retell create-web-call failed", res.status, detail.slice(0, 500));
-    return json({ error: "call_failed" }, 502);
+    // Temporary: surface Retell's validation message so the wiring can be diagnosed.
+    // Contains no credentials. Remove once the demo is confirmed working.
+    return json({ error: "call_failed", upstream_status: res.status, upstream_detail: detail.slice(0, 400) }, 502);
   }
 
   const data = await res.json();
