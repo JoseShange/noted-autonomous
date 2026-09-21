@@ -5,7 +5,7 @@
 const AGENT_ID = process.env.RETELL_AGENT_ID || "agent_58644c4f880a49a49c65c7fba7";
 const MAX_CALL_MS = 10 * 60 * 1000;          // hard 10-minute cap, enforced by Retell
 const RATE_WINDOW_MS = 15 * 60 * 1000;       // per-IP window
-const RATE_MAX = 3;                          // calls per IP per window
+const RATE_MAX = 8;                          // calls per IP per window (3 tiers, so allow a few passes)
 const GLOBAL_WINDOW_MS = 60 * 60 * 1000;     // site-wide window
 const GLOBAL_MAX = 40;                       // calls per hour across all visitors
 
@@ -87,24 +87,7 @@ export default async (req) => {
   }
 
   // Trim: a pasted key often carries a trailing newline or space, which Retell rejects as invalid.
-  const rawKey = process.env.RETELL_API_KEY || "";
-  const apiKey = rawKey.trim();
-
-  // Temporary diagnostic. Reports the SHAPE of the stored key, never its value.
-  // Remove before merging to main.
-  if (new URL(req.url).searchParams.get("diag") === "1") {
-    return json({
-      present: rawKey.length > 0,
-      length_raw: rawKey.length,
-      length_trimmed: apiKey.length,
-      starts_with_key_prefix: apiKey.startsWith("key_"),
-      had_surrounding_whitespace: rawKey !== apiKey,
-      has_quotes: /["'`]/.test(apiKey),
-      has_inner_whitespace: /\s/.test(apiKey),
-      charset_ok: /^[A-Za-z0-9_-]+$/.test(apiKey),
-    });
-  }
-
+  const apiKey = (process.env.RETELL_API_KEY || "").trim();
   if (!apiKey) return json({ error: "not_configured" }, 500);
 
   let tierKey = "business";
@@ -182,9 +165,7 @@ export default async (req) => {
   if (!res.ok) {
     const detail = await res.text().catch(() => "");
     console.error("retell create-web-call failed", res.status, detail.slice(0, 500));
-    // Temporary: surface Retell's validation message so the wiring can be diagnosed.
-    // Contains no credentials. Remove once the demo is confirmed working.
-    return json({ error: "call_failed", upstream_status: res.status, upstream_detail: detail.slice(0, 400) }, 502);
+    return json({ error: "call_failed" }, 502);
   }
 
   const data = await res.json();
