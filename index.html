@@ -353,7 +353,9 @@ footer{border-top:1px solid var(--line);padding:48px 0 30px;color:var(--muted)}
   .price-feat{list-style:none;margin:0 0 1.7rem;padding:0;flex:1}
   .price-feat li{color:var(--muted);font-size:.93rem;padding:.42rem 0 .42rem 1.5rem;position:relative}
   .price-feat li::before{content:"";position:absolute;left:0;top:.82rem;width:7px;height:7px;border-radius:50%;background:var(--teal);box-shadow:0 0 8px rgba(63,224,232,.7)}
-  .price-card .btn{justify-content:center}
+  .price-card .btn{justify-content:center;width:100%;cursor:pointer}
+  .price-call{display:block;text-align:center;color:var(--muted);font-size:.84rem;margin-top:.75rem;transition:color .2s}
+  .price-call:hover{color:var(--teal)}
   .price-note{max-width:820px;margin:36px auto 0;color:var(--muted);font-size:.95rem;border-top:1px solid var(--line);padding-top:26px}
   .price-note .setup{display:block;font-size:1.05rem;color:var(--ink);margin-bottom:.6rem}
   @media(max-width:860px){.price-grid{grid-template-columns:1fr}}
@@ -376,7 +378,8 @@ footer{border-top:1px solid var(--line);padding:48px 0 30px;color:var(--muted)}
           <li>Every call recorded, with the audio sent straight to you</li>
           <li>English or Afrikaans</li>
         </ul>
-        <a class="btn ghost" href="tel:+27600702368">Talk to us</a>
+        <a class="btn ghost demo-btn" href="tel:+27600702368" data-tier="starter">Hear her answer</a>
+        <a class="price-call" href="tel:+27600702368">or call 060 070 2368</a>
       </div>
 
       <div class="price-card feat">
@@ -391,7 +394,8 @@ footer{border-top:1px solid var(--line);padding:48px 0 30px;color:var(--muted)}
           <li>Screens and blocks spam callers</li>
           <li>Your choice of voice, name and accent</li>
         </ul>
-        <a class="btn" href="tel:+27600702368" style="color:#02121a">Talk to us</a>
+        <a class="btn demo-btn" href="tel:+27600702368" data-tier="business" style="color:#02121a">Hear her answer</a>
+        <a class="price-call" href="tel:+27600702368">or call 060 070 2368</a>
       </div>
 
       <div class="price-card">
@@ -405,7 +409,8 @@ footer{border-top:1px solid var(--line);padding:48px 0 30px;color:var(--muted)}
           <li>Integration with the systems you already use</li>
           <li>Priority support</li>
         </ul>
-        <a class="btn ghost" href="tel:+27600702368">Talk to us</a>
+        <a class="btn ghost demo-btn" href="tel:+27600702368" data-tier="multisite">Hear him answer</a>
+        <a class="price-call" href="tel:+27600702368">or call 060 070 2368</a>
       </div>
 
     </div>
@@ -513,5 +518,161 @@ faces.concat(faces).forEach(function(src){
 });
 document.getElementById('menubtn').addEventListener('click',function(){document.getElementById('nav').classList.toggle('open');});
 </script>
+<!-- ===== LIVE DEMO RECEPTIONIST ===== -->
+<style>
+.demo-ov[hidden]{display:none}
+.demo-ov{position:fixed;inset:0;z-index:200;display:flex;align-items:center;justify-content:center;padding:20px;background:rgba(2,6,11,.82);backdrop-filter:blur(8px);animation:demofade .2s ease}
+@keyframes demofade{from{opacity:0}to{opacity:1}}
+.demo-card{position:relative;width:100%;max-width:400px;background:var(--panel);border:1px solid var(--teal);border-radius:22px;box-shadow:var(--glow);padding:34px 26px 26px;text-align:center}
+.demo-x{position:absolute;top:12px;right:14px;background:none;border:none;color:var(--muted);font-size:1.7rem;line-height:1;cursor:pointer;transition:color .2s}
+.demo-x:hover{color:var(--teal)}
+.demo-face{position:relative;width:200px;aspect-ratio:16/11;margin:0 auto 16px;border-radius:14px;overflow:hidden;background:radial-gradient(60% 75% at 50% 42%,rgba(63,224,232,.22),rgba(10,26,38,.4) 55%,#02060b 100%);border:1px solid var(--line)}
+.demo-face img{width:100%;height:100%;object-fit:cover;object-position:center 18%;filter:contrast(1.12) brightness(1.1) saturate(1.15)}
+.demo-ring{position:absolute;inset:0;border-radius:14px;box-shadow:inset 0 0 0 2px var(--teal),0 0 22px rgba(63,224,232,.55);opacity:0;transition:opacity .2s;pointer-events:none}
+.demo-face.talking .demo-ring{opacity:1;animation:demopulse 1.2s ease-in-out infinite}
+@keyframes demopulse{0%,100%{opacity:.9}50%{opacity:.35}}
+.demo-card h3{font-size:1.45rem;margin-bottom:.15rem}
+.demo-tier{color:var(--teal);letter-spacing:.2em;font-size:.68rem;font-weight:700;text-transform:uppercase;margin-bottom:1rem}
+.demo-status{color:var(--muted);font-size:.95rem;min-height:1.5em}
+.demo-status.err{color:#ff9a8b}
+.demo-timer{font-size:.85rem;color:var(--muted);opacity:.7;margin-top:.35rem;min-height:1.2em;font-variant-numeric:tabular-nums}
+.demo-actions[hidden]{display:none}
+.demo-actions{display:flex;gap:10px;justify-content:center;margin-top:1.3rem}
+.demo-actions .btn{flex:1;justify-content:center;font-size:.92rem;padding:.7rem 1rem}
+.demo-end{background:linear-gradient(135deg,#ff7a6a,#e04b56)!important;color:#fff!important;box-shadow:0 0 18px rgba(224,75,86,.5)!important}
+.demo-note{margin-top:1.1rem;font-size:.76rem;color:var(--muted);opacity:.65;line-height:1.5}
+.demo-phone{display:block;margin-top:.55rem;color:var(--teal);font-weight:700}
+@media(max-width:420px){.demo-card{padding:30px 20px 22px}.demo-face{width:168px}}
+</style>
+<div class="demo-ov" id="demoOv" hidden>
+  <div class="demo-card" role="dialog" aria-modal="true" aria-labelledby="demoName">
+    <button class="demo-x" id="demoX" aria-label="Close">&times;</button>
+    <div class="demo-face" id="demoFace">
+      <img id="demoAvatar" src="avatar-nikita.png" alt="">
+      <span class="demo-ring"></span>
+    </div>
+    <h3 id="demoName">Connecting</h3>
+    <p class="demo-tier" id="demoTier">&nbsp;</p>
+    <p class="demo-status" id="demoStatus" role="status" aria-live="polite">Starting the call&hellip;</p>
+    <p class="demo-timer" id="demoTimer">&nbsp;</p>
+    <div class="demo-actions" id="demoActions" hidden>
+      <button class="btn ghost" id="demoMute" type="button">Mute</button>
+      <button class="btn demo-end" id="demoEnd" type="button">End call</button>
+    </div>
+    <p class="demo-note">A live AI receptionist, not a recording. This call is recorded and ends after 10 minutes.<a class="demo-phone" href="tel:+27600702368">Prefer to phone? 060 070 2368</a></p>
+  </div>
+</div>
+<script type="module">
+import { RetellWebClient } from "https://cdn.jsdelivr.net/npm/retell-client-js-sdk@3.0.1/+esm";
+
+const ov = document.getElementById('demoOv');
+const el = id => document.getElementById(id);
+let client = null, tick = null, muted = false, live = false;
+
+function show(){ ov.hidden = false; document.body.style.overflow = 'hidden'; }
+function hide(){
+  ov.hidden = true; document.body.style.overflow = '';
+  clearInterval(tick); tick = null; live = false; muted = false;
+  el('demoFace').classList.remove('talking');
+  el('demoActions').hidden = true;
+  el('demoStatus').classList.remove('err');
+  el('demoTimer').innerHTML = '&nbsp;';
+  el('demoMute').textContent = 'Mute';
+}
+function say(msg, isErr){
+  el('demoStatus').textContent = msg;
+  el('demoStatus').classList.toggle('err', !!isErr);
+}
+function countdown(seconds){
+  const end = Date.now() + seconds * 1000;
+  clearInterval(tick);
+  tick = setInterval(() => {
+    const left = Math.max(0, Math.round((end - Date.now()) / 1000));
+    el('demoTimer').textContent =
+      String(Math.floor(left / 60)) + ':' + String(left % 60).padStart(2, '0') + ' left';
+    if (left <= 0) clearInterval(tick);
+  }, 500);
+}
+function stop(){ try { client && client.stopCall(); } catch (e) {} }
+
+async function start(tier){
+  show();
+  el('demoName').textContent = 'Connecting';
+  el('demoTier').innerHTML = '&nbsp;';
+  say('Starting the call…');
+
+  let data;
+  try {
+    const r = await fetch('/api/demo-call', {
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify({ tier })
+    });
+    data = await r.json().catch(() => ({}));
+    if (!r.ok) {
+      const msg = r.status === 429
+        ? "You've had a few demos already. Give it fifteen minutes, or just phone the number below."
+        : r.status === 503
+        ? 'The demo line is busy right now. Please phone the number below.'
+        : "Couldn't start the demo. Please phone the number below.";
+      el('demoName').textContent = 'Demo unavailable';
+      say(msg, true);
+      return;
+    }
+  } catch (e) {
+    el('demoName').textContent = 'Demo unavailable';
+    say("Couldn't reach the demo line. Please phone the number below.", true);
+    return;
+  }
+
+  el('demoName').textContent = data.persona;
+  el('demoTier').textContent = data.label + ' plan';
+  if (data.avatar) el('demoAvatar').src = data.avatar;
+  el('demoAvatar').alt = data.persona + ', AI receptionist';
+  say('Allow your microphone when asked…');
+
+  client = new RetellWebClient();
+  client.on('call_started', () => {
+    live = true;
+    say('Live — go ahead and say hello');
+    el('demoActions').hidden = false;
+    countdown(data.max_seconds || 600);
+  });
+  client.on('agent_start_talking', () => el('demoFace').classList.add('talking'));
+  client.on('agent_stop_talking', () => el('demoFace').classList.remove('talking'));
+  client.on('call_ended', () => {
+    if (!ov.hidden) { say('Call ended. Thanks for trying it.'); setTimeout(hide, 1800); }
+  });
+  client.on('error', () => {
+    say('The call dropped. Please phone the number below.', true);
+    stop();
+  });
+
+  try {
+    await client.startCall({ accessToken: data.access_token });
+  } catch (e) {
+    const denied = String(e && (e.name || e.message)).toLowerCase();
+    say(denied.includes('notallowed') || denied.includes('permission') || denied.includes('denied')
+      ? 'Microphone access was blocked. Allow it in your browser, or phone the number below.'
+      : "Your browser wouldn't start the call. Please phone the number below.", true);
+  }
+}
+
+document.querySelectorAll('.demo-btn').forEach(b => {
+  b.addEventListener('click', e => { e.preventDefault(); start(b.dataset.tier); });
+});
+el('demoEnd').addEventListener('click', () => { stop(); hide(); });
+el('demoX').addEventListener('click', () => { stop(); hide(); });
+el('demoMute').addEventListener('click', () => {
+  if (!client || !live) return;
+  muted = !muted;
+  try { muted ? client.mute() : client.unmute(); } catch (e) {}
+  el('demoMute').textContent = muted ? 'Unmute' : 'Mute';
+});
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape' && !ov.hidden) { stop(); hide(); }
+});
+</script>
+<!-- ===== END LIVE DEMO ===== -->
 </body>
                                             </html>
