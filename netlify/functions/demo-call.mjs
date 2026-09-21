@@ -3,7 +3,7 @@
 // Env: RETELL_API_KEY (required), RETELL_AGENT_ID (optional, falls back to the sales agent)
 
 const AGENT_ID = process.env.RETELL_AGENT_ID || "agent_58644c4f880a49a49c65c7fba7";
-const MAX_CALL_MS = 10 * 60 * 1000;          // hard 10-minute cap, enforced by Retell
+const MAX_CALL_MS = 5 * 60 * 1000;           // hard 5-minute cap, enforced by Retell
 const RATE_WINDOW_MS = 15 * 60 * 1000;       // per-IP window
 const RATE_MAX = 8;                          // calls per IP per window (3 tiers, so allow a few passes)
 const GLOBAL_WINDOW_MS = 60 * 60 * 1000;     // site-wide window
@@ -18,9 +18,9 @@ const ALLOWED_HOSTS = [
 const TIERS = {
   starter: {
     label: "Starter",
-    persona: "Angela",
-    voice_id: "retell-Willa",
-    avatar: "face-03.png",
+    persona: "Sophie",
+    voice_id: "minimax-Hailey",
+    avatar: "avatar-sophie.png",
     price: "R1,950 a month",
     minutes: "200 call-minutes",
     highlights:
@@ -28,9 +28,9 @@ const TIERS = {
   },
   business: {
     label: "Business",
-    persona: "Nikita",
-    voice_id: "retell-Grace",
-    avatar: "avatar-nikita.png",
+    persona: "Chloe",
+    voice_id: "minimax-Chloe",
+    avatar: "avatar-chloe.png",
     price: "R3,950 a month",
     minutes: "600 call-minutes",
     highlights:
@@ -39,7 +39,7 @@ const TIERS = {
   multisite: {
     label: "Multi-site",
     persona: "Davis",
-    voice_id: "retell-Nico",
+    voice_id: "minimax-Nico",
     avatar: "avatar-davis.png",
     price: "from R7,500 a month",
     minutes: "several numbers, branches or teams",
