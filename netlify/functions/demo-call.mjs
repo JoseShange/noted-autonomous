@@ -18,9 +18,9 @@ const ALLOWED_HOSTS = [
 const TIERS = {
   starter: {
     label: "Starter",
-    persona: "Sophie",
+    persona: "Angela",
     voice_id: "retell-Willa",
-    avatar: "avatar-sophie.png",
+    avatar: "face-03.png",
     price: "R1,950 a month",
     minutes: "200 call-minutes",
     highlights:
