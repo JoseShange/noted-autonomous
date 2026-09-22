@@ -526,8 +526,8 @@ document.getElementById('menubtn').addEventListener('click',function(){document.
 .demo-card{position:relative;width:100%;max-width:400px;background:var(--panel);border:1px solid var(--teal);border-radius:22px;box-shadow:var(--glow);padding:34px 26px 26px;text-align:center}
 .demo-x{position:absolute;top:12px;right:14px;background:none;border:none;color:var(--muted);font-size:1.7rem;line-height:1;cursor:pointer;transition:color .2s}
 .demo-x:hover{color:var(--teal)}
-.demo-face{position:relative;width:200px;aspect-ratio:16/11;margin:0 auto 16px;border-radius:14px;overflow:hidden;background:radial-gradient(60% 75% at 50% 42%,rgba(63,224,232,.22),rgba(10,26,38,.4) 55%,#02060b 100%);border:1px solid var(--line)}
-.demo-face img{width:100%;height:100%;object-fit:cover;object-position:center 18%;filter:contrast(1.12) brightness(1.1) saturate(1.15)}
+.demo-face{position:relative;width:232px;aspect-ratio:4/3;margin:0 auto 16px;border-radius:14px;overflow:hidden;background:radial-gradient(60% 75% at 50% 42%,rgba(63,224,232,.22),rgba(10,26,38,.4) 55%,#02060b 100%);border:1px solid var(--line)}
+.demo-face img{position:absolute;max-width:none;width:426.667%;height:auto;left:-168%;top:-24%;filter:contrast(1.12) brightness(1.1) saturate(1.15)}
 .demo-ring{position:absolute;inset:0;border-radius:14px;box-shadow:inset 0 0 0 2px var(--teal),0 0 22px rgba(63,224,232,.55);opacity:0;transition:opacity .2s;pointer-events:none}
 .demo-face.talking .demo-ring{opacity:1;animation:demopulse 1.2s ease-in-out infinite}
 @keyframes demopulse{0%,100%{opacity:.9}50%{opacity:.35}}
@@ -542,7 +542,7 @@ document.getElementById('menubtn').addEventListener('click',function(){document.
 .demo-end{background:linear-gradient(135deg,#ff7a6a,#e04b56)!important;color:#fff!important;box-shadow:0 0 18px rgba(224,75,86,.5)!important}
 .demo-note{margin-top:1.1rem;font-size:.76rem;color:var(--muted);opacity:.65;line-height:1.5}
 .demo-phone{display:block;margin-top:.55rem;color:var(--teal);font-weight:700}
-@media(max-width:420px){.demo-card{padding:30px 20px 22px}.demo-face{width:168px}}
+@media(max-width:420px){.demo-card{padding:30px 20px 22px}.demo-face{width:196px}}
 </style>
 <div class="demo-ov" id="demoOv" hidden>
   <div class="demo-card" role="dialog" aria-modal="true" aria-labelledby="demoName">
@@ -559,7 +559,7 @@ document.getElementById('menubtn').addEventListener('click',function(){document.
       <button class="btn ghost" id="demoMute" type="button">Mute</button>
       <button class="btn demo-end" id="demoEnd" type="button">End call</button>
     </div>
-    <p class="demo-note">A live AI receptionist, not a recording. This call is recorded and ends after 10 minutes.<a class="demo-phone" href="tel:+27600702368">Prefer to phone? 060 070 2368</a></p>
+    <p class="demo-note">A live AI receptionist, not a recording. This call is recorded and ends after <span id="demoLimit">5 minutes</span>.<a class="demo-phone" href="tel:+27600702368">Prefer to phone? 060 070 2368</a></p>
   </div>
 </div>
 <script type="module">
@@ -627,6 +627,9 @@ async function start(tier){
 
   el('demoName').textContent = data.persona;
   el('demoTier').textContent = data.label + ' plan';
+  const limitSecs = data.max_seconds || 300;
+  const limitMins = Math.max(1, Math.round(limitSecs / 60));
+  el('demoLimit').textContent = limitMins + (limitMins === 1 ? ' minute' : ' minutes');
   if (data.avatar) el('demoAvatar').src = data.avatar;
   el('demoAvatar').alt = data.persona + ', AI receptionist';
   say('Allow your microphone when asked…');
@@ -636,7 +639,7 @@ async function start(tier){
     live = true;
     say('Live — go ahead and say hello');
     el('demoActions').hidden = false;
-    countdown(data.max_seconds || 600);
+    countdown(limitSecs);
   });
   client.on('agent_start_talking', () => el('demoFace').classList.add('talking'));
   client.on('agent_stop_talking', () => el('demoFace').classList.remove('talking'));
