@@ -39,7 +39,7 @@ const TIERS = {
   multisite: {
     label: "Multi-site",
     persona: "Davis",
-    voice_id: "custom_voice_cf0e09a8f38d3d302cf0350d8c",
+    voice_id: "minimax-Nico",
     avatar: "avatar-davis.png",
     price: "from R7,500 a month",
     minutes: "several numbers, branches or teams",
